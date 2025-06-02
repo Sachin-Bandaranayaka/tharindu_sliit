@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Risk Assessment Tool</title>
+    <link rel="stylesheet" href="static/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="animate-fadeInDown">
+      <div class="container">
+        <div class="logo">
+          <i class="fas fa-shield-alt"></i>
+          <h1>Risk Assessment</h1>
+        </div>
+        <button class="mobile-menu-toggle" id="mobile-menu-toggle">
+          <i class="fas fa-bars"></i>
+        </button>
+        <nav id="main-nav">
+          <ul>
+            <li class="active animate-fadeInLeft animate-delay-100">
+              <a href="index.html">
+                <i class="fas fa-calculator"></i>
+                <span>CVSS Prediction</span>
+              </a>
+            </li>
+            <li class="animate-fadeInLeft animate-delay-200">
+              <a href="insurance.html">
+                <i class="fas fa-file-invoice-dollar"></i>
+                <span>Insurance Claims</span>
+              </a>
+            </li>
+            <li class="animate-fadeInLeft animate-delay-300">
+              <a href="risk-framework.html">
+                <i class="fas fa-sitemap"></i>
+                <span>Risk Framework</span>
+              </a>
+            </li>
+            <li class="animate-fadeInLeft animate-delay-500">
+              <a href="dashboard.html">
+                <i class="fas fa-chart-dashboard"></i>
+                <span>Risk Dashboard</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <div class="container">
+        <section class="intro-section animate-fadeInUp">
+          <div class="intro-content">
+            <h2 class="gradient-text">CVSS Score Prediction</h2>
+            <p class="text-lg">
+              Calculate the potential Common Vulnerability Scoring System (CVSS)
+              score by entering the vulnerability details below. This tool
+              predicts the severity of security vulnerabilities based on
+              standardized metrics.
+            </p>
+          </div>
+        </section>
+
+        <div class="card-container">
+          <section class="prediction-form-section card animate-fadeInUp animate-delay-200">
+            <div class="card-header">
+              <div class="card-icon">
+                <i class="fas fa-shield-virus"></i>
+              </div>
+              <h3>Vulnerability Details</h3>
+            </div>
+            <div class="card-content">
+            <form id="cvss-form">
+              <div class="form-group">
+                <label for="cwe-code">CWE Code</label>
+                <input
+                  type="number"
+                  id="cwe-code"
+                  name="cwe-code"
+                  placeholder="e.g., 79"
+                  required
+                />
+                <span class="tooltip"
+                  >Common Weakness Enumeration identifier</span
+                >
+              </div>
+
+              <div class="form-group">
+                <label for="access-vector">Access Vector</label>
+                <select id="access-vector" name="access-vector" required>
+                  <option value="" disabled selected>
+                    Select access vector
+                  </option>
+                  <option value="N">Network (N)</option>
+                  <option value="A">Adjacent Network (A)</option>
+                  <option value="L">Local (L)</option>
+                  <option value="P">Physical (P)</option>
+                </select>
+                <span class="tooltip">How the vulnerability is exploited</span>
+              </div>
+
+              <div class="form-group">
+                <label for="access-complexity">Access Complexity</label>
+                <select
+                  id="access-complexity"
+                  name="access-complexity"
+                  required
+                >
+                  <option value="" disabled selected>Select complexity</option>
+                  <option value="L">Low (L)</option>
+                  <option value="M">Medium (M)</option>
+                  <option value="H">High (H)</option>
+                </select>
+                <span class="tooltip"
+                  >Complexity of attack required to exploit the
+                  vulnerability</span
+                >
+              </div>
+
+              <div class="form-group">
+                <label for="authentication">Authentication</label>
+                <select id="authentication" name="authentication" required>
+                  <option value="" disabled selected>
+                    Select authentication
+                  </option>
+                  <option value="N">None (N)</option>
+                  <option value="S">Single (S)</option>
+                  <option value="M">Multiple (M)</option>
+                </select>
+                <span class="tooltip"
+                  >Authentication levels required to exploit the
+                  vulnerability</span
+                >
+              </div>
+
+              <div class="form-group">
+                <label for="confidentiality">Impact on Confidentiality</label>
+                <select id="confidentiality" name="confidentiality" required>
+                  <option value="" disabled selected>Select impact</option>
+                  <option value="N">None (N)</option>
+                  <option value="P">Partial (P)</option>
+                  <option value="C">Complete (C)</option>
+                </select>
+                <span class="tooltip">Impact on information disclosure</span>
+              </div>
+
+              <div class="form-group">
+                <label for="integrity">Impact on Integrity</label>
+                <select id="integrity" name="integrity" required>
+                  <option value="" disabled selected>Select impact</option>
+                  <option value="N">None (N)</option>
+                  <option value="P">Partial (P)</option>
+                  <option value="C">Complete (C)</option>
+                </select>
+                <span class="tooltip">Impact on information modification</span>
+              </div>
+
+              <div class="form-group">
+                <label for="availability">Impact on Availability</label>
+                <select id="availability" name="availability" required>
+                  <option value="" disabled selected>Select impact</option>
+                  <option value="N">None (N)</option>
+                  <option value="P">Partial (P)</option>
+                  <option value="C">Complete (C)</option>
+                </select>
+                <span class="tooltip">Impact on resource availability</span>
+              </div>
+
+              <div class="form-group">
+                <label for="vulnerability-summary">Vulnerability Summary</label>
+                <textarea
+                  id="vulnerability-summary"
+                  name="vulnerability-summary"
+                  rows="4"
+                  placeholder="Describe the vulnerability in detail..."
+                  required
+                ></textarea>
+              </div>
+
+              <div class="form-actions">
+                <button type="submit" class="btn btn-primary btn-lg">
+                  <i class="fas fa-calculator"></i>
+                  Calculate CVSS Score
+                </button>
+                <button type="reset" class="btn btn-outline btn-lg">
+                  <i class="fas fa-redo"></i>
+                  Reset Form
+                </button>
+              </div>
+            </form>
+            </div>
+          </section>
+
+          <section
+            class="prediction-result-section card animate-fadeInUp animate-delay-300"
+            id="prediction-result"
+          >
+            <div class="card-header">
+              <div class="card-icon">
+                <i class="fas fa-chart-line"></i>
+              </div>
+              <h3>CVSS Score Prediction</h3>
+            </div>
+            <div class="card-content">
+            <div class="result-content">
+              <div class="loading-indicator hidden">
+                <i class="fas fa-spinner fa-spin"></i>
+                <p>Calculating score...</p>
+              </div>
+              <div class="score-display">
+                <div class="meter-container">
+                  <div class="meter">
+                    <div class="meter-value" id="cvss-meter"></div>
+                  </div>
+                  <div class="meter-labels">
+                    <span>0</span>
+                    <span>2.5</span>
+                    <span>5.0</span>
+                    <span>7.5</span>
+                    <span>10</span>
+                  </div>
+                </div>
+                <div class="score-value">
+                  <span id="cvss-score">--</span>/10
+                </div>
+                <div class="risk-category" id="risk-category">
+                  Not calculated
+                </div>
+              </div>
+              <div class="score-details">
+                <div class="score-breakdown">
+                  <h4>Score Breakdown</h4>
+                  <ul id="score-breakdown-list">
+                    <li>
+                      Exploitability: <span id="exploitability-score">--</span>
+                    </li>
+                    <li>Impact: <span id="impact-score">--</span></li>
+                  </ul>
+                </div>
+                <div class="vector-string">
+                  <h4>CVSS Vector String</h4>
+                  <code id="vector-string">--</code>
+                </div>
+              </div>
+              <div class="action-buttons">
+                <button id="add-to-dashboard" class="btn btn-primary">
+                  <i class="fas fa-plus"></i>
+                  Add to Dashboard
+                </button>
+                <button id="view-dashboard" class="btn btn-outline">
+                  <i class="fas fa-chart-dashboard"></i>
+                  View Dashboard
+                </button>
+              </div>
+            </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <div class="container">
+        <p>&copy; 2023 CVSS Risk Assessment Tool. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script src="static/script.js"></script>
+  </body>
+</html>

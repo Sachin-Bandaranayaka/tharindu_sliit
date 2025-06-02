@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Claim Prediction History</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(120deg, #f5f7fa, #e4ebf5);
+            font-family: 'Montserrat', sans-serif;
+        }
+        nav {
+            background: #002855;
+            border-bottom: 3px solid #ffc107;
+        }
+        nav a {
+            color: white !important;
+        }
+        nav a:hover {
+            color: #ffc107 !important;
+        }
+        h1 {
+            color: #002855;
+            font-weight: bold;
+            text-align: center;
+            margin: 30px 0;
+        }
+        .table thead {
+            background: #002855;
+            color: white;
+            font-weight: 600;
+        }
+        .table-hover tbody tr:hover {
+            background-color: #f1f1f1;
+        }
+        .table-striped tbody tr:nth-of-type(odd) {
+            background-color: #f9f9f9;
+        }
+        .table-container {
+            overflow-x: auto; /* Enables horizontal scrolling */
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: white;
+            padding: 15px;
+        }
+        .table {
+            white-space: nowrap; /* Prevent table content from wrapping */
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand fw-bold" href="/">Claim Fee Predictor</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link fw-semibold" href="/">Home</a></li>
+                <li class="nav-item"><a class="nav-link fw-semibold" href="/history">Prediction History</a></li>
+                <li class="nav-item"><a class="nav-link fw-semibold" href="/predict">Predict Claim Fee</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <h1>Claim Prediction History</h1>
+    <div class="table-container">
+        <table class="table table-bordered table-striped table-hover">
+            <thead>
+            <tr>
+                <th>Policy Number</th>
+                <th>Company Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Date of Incident</th>
+                <th>Description</th>
+                <th>Incurred Loss Amount</th>
+                <th>Requested Coverage %</th>
+                <th>Deductible</th>
+                <th>Coverage Limit</th>
+                <th>Predicted Claim Fee (Rs.)</th>
+                <th>Saved Date</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for record in history %}
+            <tr>
+                <td>{{ record['Policy Number'] }}</td>
+                <td>{{ record['Company Name'] }}</td>
+                <td>{{ record['Email'] }}</td>
+                <td>{{ record['Phone'] }}</td>
+                <td>{{ record['Date of Incident'] }}</td>
+                <td>{{ record['Description of Incident'] }}</td>
+                <td>{{ record['Incurred Loss Amount'] | int }}</td>
+                <td>{{ record['Requested Coverage Percentage'] | int }}</td>
+                <td>{{ record['Deductible'] | int }}</td>
+                <td>{{ record['Coverage Limit'] | int }}</td>
+                <td>Rs. {{ '%.2f' % record['Predicted Final Claim Fee'] }}</td>
+                <td>{{ record['Saved Date'] }}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

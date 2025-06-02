@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Insurance Claims Prediction - Risk Assessment Tool</title>
+    <link rel="stylesheet" href="static/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      .insurance-form {
+        background: white;
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        margin-bottom: 2rem;
+      }
+      
+      .form-group {
+        margin-bottom: 1.5rem;
+      }
+      
+      .form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: 500;
+        color: #333;
+      }
+      
+      .form-group input,
+      .form-group textarea,
+      .form-group select {
+        width: 100%;
+        padding: 0.75rem;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 1rem;
+        transition: border-color 0.3s ease;
+      }
+      
+      .form-group input:focus,
+      .form-group textarea:focus,
+      .form-group select:focus {
+        outline: none;
+        border-color: #007bff;
+        box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+      }
+      
+      .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+      }
+      
+      @media (max-width: 768px) {
+        .form-row {
+          grid-template-columns: 1fr;
+        }
+      }
+      
+      .predict-btn {
+        background: linear-gradient(135deg, #007bff, #0056b3);
+        color: white;
+        padding: 1rem 2rem;
+        border: none;
+        border-radius: 5px;
+        font-size: 1.1rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        width: 100%;
+      }
+      
+      .predict-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+      }
+      
+      .predict-btn:disabled {
+        background: #6c757d;
+        cursor: not-allowed;
+        transform: none;
+      }
+      
+      .result-section {
+        background: white;
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        margin-top: 2rem;
+        display: none;
+      }
+      
+      .result-section.show {
+        display: block;
+      }
+      
+      .prediction-result {
+        text-align: center;
+        padding: 2rem;
+        background: linear-gradient(135deg, #28a745, #20c997);
+        color: white;
+        border-radius: 10px;
+        margin-bottom: 1rem;
+      }
+      
+      .prediction-amount {
+        font-size: 2.5rem;
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+      }
+      
+      .history-section {
+        background: white;
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        margin-top: 2rem;
+      }
+      
+      .history-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 1rem;
+      }
+      
+      .history-table th,
+      .history-table td {
+        padding: 0.75rem;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+      }
+      
+      .history-table th {
+        background-color: #f8f9fa;
+        font-weight: 600;
+      }
+      
+      .loading {
+        display: none;
+        text-align: center;
+        padding: 1rem;
+      }
+      
+      .loading.show {
+        display: block;
+      }
+      
+      .error-message {
+        background: #f8d7da;
+        color: #721c24;
+        padding: 1rem;
+        border-radius: 5px;
+        margin-top: 1rem;
+        display: none;
+      }
+      
+      .error-message.show {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="animate-fadeInDown">
+      <div class="container">
+        <div class="logo">
+          <i class="fas fa-shield-alt"></i>
+          <h1>Insurance Claims</h1>
+        </div>
+        <button class="mobile-menu-toggle" id="mobile-menu-toggle">
+          <i class="fas fa-bars"></i>
+        </button>
+        <nav id="main-nav">
+          <ul>
+            <li class="animate-fadeInLeft animate-delay-100">
+              <a href="index.html">
+                <i class="fas fa-calculator"></i>
+                <span>CVSS Prediction</span>
+              </a>
+            </li>
+            <li class="active animate-fadeInLeft animate-delay-200">
+              <a href="insurance.html">
+                <i class="fas fa-file-invoice-dollar"></i>
+                <span>Insurance Claims</span>
+              </a>
+            </li>
+            <li class="animate-fadeInLeft animate-delay-300">
+              <a href="risk-framework.html">
+                <i class="fas fa-sitemap"></i>
+                <span>Risk Framework</span>
+              </a>
+            </li>
+            <li class="animate-fadeInLeft animate-delay-500">
+              <a href="dashboard.html">
+                <i class="fas fa-chart-dashboard"></i>
+                <span>Risk Dashboard</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <div class="container">
+        <section class="intro-section animate-fadeInUp">
+          <h2 class="gradient-text text-lg">Insurance Claim Fee Prediction</h2>
+          <p class="text-lg animate-delay-200">
+            Predict insurance claim fees using our machine learning model. Enter the claim details below to get an accurate prediction of the claim amount.
+          </p>
+        </section>
+
+        <section class="insurance-form card animate-fadeInUp animate-delay-300">
+          <div class="card-header">
+            <div class="card-icon">
+              <i class="fas fa-file-invoice-dollar"></i>
+            </div>
+            <h3>Claim Information</h3>
+          </div>
+          <div class="card-content">
+          <form id="insurance-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="policy-number">Policy Number</label>
+                <input type="text" id="policy-number" name="Policy Number" required>
+              </div>
+              <div class="form-group">
+                <label for="company-name">Company Name</label>
+                <input type="text" id="company-name" name="Company Name" required>
+              </div>
+            </div>
+            
+            <div class="form-row">
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="Email" required>
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="Phone Number" required>
+              </div>
+            </div>
+            
+            <div class="form-row">
+              <div class="form-group">
+                <label for="incident-date">Date of Incident</label>
+                <input type="date" id="incident-date" name="Date of Incident" required>
+              </div>
+              <div class="form-group">
+                <label for="incurred-loss">Incurred Loss Amount ($)</label>
+                <input type="number" id="incurred-loss" name="Incurred Loss Amount" step="0.01" required>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label for="incident-description">Description of Incident</label>
+              <textarea id="incident-description" name="Description of Incident" rows="3" required></textarea>
+            </div>
+            
+            <div class="form-row">
+              <div class="form-group">
+                <label for="coverage-percentage">Requested Coverage Percentage (%)</label>
+                <input type="number" id="coverage-percentage" name="Requested Coverage Percentage" min="0" max="100" required>
+              </div>
+              <div class="form-group">
+                <label for="deductible">Deductible ($)</label>
+                <input type="number" id="deductible" name="Deductible" step="0.01" required>
+              </div>
+            </div>
+            
+            <div class="form-row">
+              <div class="form-group">
+                <label for="coverage-limit">Coverage Limit ($)</label>
+                <input type="number" id="coverage-limit" name="Coverage Limit" step="0.01" required>
+              </div>
+              <div class="form-group">
+                <label for="coverage-percent">Coverage Percentage (%)</label>
+                <input type="number" id="coverage-percent" name="Coverage Percentage" min="0" max="100" required>
+              </div>
+            </div>
+            
+            <div class="form-row">
+              <div class="form-group">
+                <label for="verified-loss">Verified Incurred Loss Amount ($)</label>
+                <input type="number" id="verified-loss" name="Verified Incurred Loss Amount" step="0.01" required>
+              </div>
+              <div class="form-group">
+                <label for="loss-after-deductible">Loss After Deductible ($)</label>
+                <input type="number" id="loss-after-deductible" name="Loss After Deductible" step="0.01" required>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label for="capped-loss">Capped Loss ($)</label>
+              <input type="number" id="capped-loss" name="Capped Loss" step="0.01" required>
+            </div>
+            
+            <div class="form-actions">
+              <button type="submit" class="btn btn-primary btn-lg" id="predict-btn">
+                <i class="fas fa-calculator"></i>
+                <span>Predict Claim Fee</span>
+              </button>
+            </div>
+          </form>
+          
+          <div class="loading" id="loading">
+            <i class="fas fa-spinner fa-spin"></i> Calculating prediction...
+          </div>
+          
+          <div class="error-message" id="error-message"></div>
+          </div>
+        </section>
+
+        <section class="result-section card animate-fadeInUp animate-delay-500" id="result-section">
+          <div class="card-header">
+            <div class="card-icon">
+              <i class="fas fa-chart-line"></i>
+            </div>
+            <h3>Prediction Result</h3>
+          </div>
+          <div class="card-content">
+            <div class="prediction-result">
+              <div class="prediction-amount" id="prediction-amount">$0.00</div>
+              <p>Predicted Claim Fee</p>
+            </div>
+          </div>
+        </section>
+        
+        <section class="history-section card animate-fadeInUp animate-delay-700">
+          <div class="card-header">
+            <div class="card-icon">
+              <i class="fas fa-history"></i>
+            </div>
+            <h3>Recent Predictions</h3>
+            <div class="card-actions">
+              <button class="btn btn-ghost btn-sm" onclick="loadHistory()">
+                <i class="fas fa-sync-alt"></i>
+                <span>Refresh</span>
+              </button>
+            </div>
+          </div>
+          <div class="card-content">
+            <div id="history-container">
+              <p>Click "Refresh" to view recent predictions.</p>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script>
+      document.getElementById('insurance-form').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        const formData = new FormData(this);
+        const data = {};
+        
+        // Convert FormData to object
+        for (let [key, value] of formData.entries()) {
+          data[key] = value;
+        }
+        
+        // Show loading
+        document.getElementById('loading').classList.add('show');
+        document.getElementById('predict-btn').disabled = true;
+        document.getElementById('error-message').classList.remove('show');
+        document.getElementById('result-section').classList.remove('show');
+        
+        try {
+          const response = await fetch('/api/insurance/predict', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data)
+          });
+          
+          const result = await response.json();
+          
+          if (result.success) {
+            // Show result
+            document.getElementById('prediction-amount').textContent = 
+              '$' + result.predicted_claim_fee.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+            document.getElementById('result-section').classList.add('show');
+          } else {
+            throw new Error(result.error || 'Prediction failed');
+          }
+        } catch (error) {
+          console.error('Error:', error);
+          document.getElementById('error-message').textContent = 'Error: ' + error.message;
+          document.getElementById('error-message').classList.add('show');
+        } finally {
+          // Hide loading
+          document.getElementById('loading').classList.remove('show');
+          document.getElementById('predict-btn').disabled = false;
+        }
+      });
+      
+      async function loadHistory() {
+        try {
+          const response = await fetch('/api/insurance/history');
+          const result = await response.json();
+          
+          if (result.success && result.predictions.length > 0) {
+            let historyHtml = '<table class="history-table"><thead><tr><th>Date</th><th>Company</th><th>Incident Amount</th><th>Predicted Fee</th></tr></thead><tbody>';
+            
+            result.predictions.slice(0, 10).forEach(pred => {
+              const date = new Date(pred.timestamp).toLocaleDateString();
+              const company = pred.input_data['Company Name'] || 'N/A';
+              const incidentAmount = '$' + (pred.input_data['Incurred Loss Amount'] || 0).toLocaleString();
+              const predictedFee = '$' + pred.predicted_claim_fee.toLocaleString('en-US', {minimumFractionDigits: 2});
+              
+              historyHtml += `<tr><td>${date}</td><td>${company}</td><td>${incidentAmount}</td><td>${predictedFee}</td></tr>`;
+            });
+            
+            historyHtml += '</tbody></table>';
+            document.getElementById('history-container').innerHTML = historyHtml;
+          } else {
+            document.getElementById('history-container').innerHTML = '<p>No prediction history available.</p>';
+          }
+        } catch (error) {
+          console.error('Error loading history:', error);
+          document.getElementById('history-container').innerHTML = '<p>Error loading history.</p>';
+        }
+      }
+      
+      // Mobile menu toggle
+      document.getElementById('mobile-menu-toggle').addEventListener('click', function() {
+        document.getElementById('main-nav').classList.toggle('active');
+      });
+    </script>
+  </body>
+</html>
