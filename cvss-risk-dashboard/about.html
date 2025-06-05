@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - CyberSafe</title>
+    <link rel="stylesheet" href="static/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>CyberSafe</span>
+                </div>
+                <nav id="main-nav">
+                    <ul>
+                        <li><a href="home.html"><i class="fas fa-home"></i> Home</a></li>
+                        <li><a href="index.html"><i class="fas fa-calculator"></i> CVSS Assessment</a></li>
+                        <li><a href="expert-assessment.html"><i class="fas fa-user-tie"></i> Expert Assessment</a></li>
+                        <li><a href="sector-assessment.html"><i class="fas fa-industry"></i> Sector Assessment</a></li>
+                        <li><a href="insurance.html"><i class="fas fa-shield-alt"></i> Insurance</a></li>
+                        <li><a href="dashboard.html"><i class="fas fa-chart-line"></i> Dashboard</a></li>
+                        <li class="active"><a href="about.html"><i class="fas fa-info-circle"></i> About Us</a></li>
+                        <li id="logoutLi" style="display: none;">
+                            <a href="#" id="logoutButton">
+                                <i class="fas fa-sign-out-alt"></i>
+                                <span>Logout</span>
+                            </a>
+                        </li>
+                        <li id="loginLi" style="display: none;">
+                            <a href="login.html">
+                                <i class="fas fa-sign-in-alt"></i>
+                                <span>Login</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <button class="mobile-menu-toggle" id="mobile-menu-toggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="intro-section">
+            <div class="container">
+                <div class="intro-content animate-fadeInUp">
+                    <h1 class="text-gradient">Empowering Secure Digital Futures</h1>
+                    <p class="text-lg">At CyberSafe, our mission is to revolutionize cyber risk assessment by integrating advanced analytics and automation, enabling businesses and insurers to make informed decisions in an ever-evolving digital landscape.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Who We Are Section -->
+        <section class="about-section">
+            <div class="container">
+                <div class="about-content">
+                    <div class="about-image animate-fadeInLeft">
+                        <div class="image-container">
+                            <i class="fas fa-users-cog"></i>
+                        </div>
+                    </div>
+                    <div class="about-text animate-fadeInRight">
+                        <h2>Who We Are</h2>
+                        <p>CyberSafe is a team of cybersecurity experts, data scientists, and insurance professionals dedicated to enhancing the way organizations understand and manage cyber risks. Our platform leverages cutting-edge technology to provide real-time insights and actionable recommendations.</p>
+                        <p>With decades of combined experience in cybersecurity and risk management, our team has developed a comprehensive solution that bridges the gap between technical vulnerabilities and business impact.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Our Approach Section -->
+        <section class="approach-section">
+            <div class="container">
+                <h2 class="section-title text-center animate-fadeInUp">Our Approach</h2>
+                
+                <div class="approach-grid">
+                    <div class="approach-card animate-fadeInUp animate-delay-100">
+                        <div class="approach-icon">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <h3>Data-Driven Modeling</h3>
+                        <p>We have compiled and analyzed cyber attack damage data spanning from 2000 to 2024, training our machine learning models to predict potential threats and assess risk levels accurately.</p>
+                    </div>
+                    
+                    <div class="approach-card animate-fadeInUp animate-delay-200">
+                        <div class="approach-icon">
+                            <i class="fas fa-sliders-h"></i>
+                        </div>
+                        <h3>Customized Assessments</h3>
+                        <p>Our system evaluates your company's specific risk factors, including industry, size, and existing security measures, to provide tailored insurance recommendations.</p>
+                    </div>
+                    
+                    <div class="approach-card animate-fadeInUp animate-delay-300">
+                        <div class="approach-icon">
+                            <i class="fas fa-sync-alt"></i>
+                        </div>
+                        <h3>Continuous Improvement</h3>
+                        <p>Our models evolve with emerging threats, ensuring that our risk assessments remain current and effective.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why It Matters Section -->
+        <section class="why-matters-section">
+            <div class="container">
+                <div class="why-matters-content">
+                    <div class="why-matters-text animate-fadeInLeft">
+                        <h2>Why It Matters</h2>
+                        <p>In today's digital age, cyber threats are not just IT issues—they're business risks. CyberSafe provides the tools and insights necessary to navigate these challenges effectively, ensuring that your organization is not only protected but also prepared.</p>
+                        <ul class="why-matters-list">
+                            <li><i class="fas fa-check-circle"></i> Reduce financial impact of cyber incidents</li>
+                            <li><i class="fas fa-check-circle"></i> Make data-driven security investment decisions</li>
+                            <li><i class="fas fa-check-circle"></i> Optimize insurance coverage based on actual risk</li>
+                            <li><i class="fas fa-check-circle"></i> Stay ahead of evolving cyber threats</li>
+                        </ul>
+                    </div>
+                    <div class="why-matters-image animate-fadeInRight">
+                        <div class="image-container">
+                            <i class="fas fa-shield-virus"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact-section">
+            <div class="container">
+                <h2 class="section-title text-center animate-fadeInUp">Join Us</h2>
+                <p class="section-subtitle text-center animate-fadeInUp animate-delay-100">Discover how CyberSafe can transform your approach to cyber risk management and insurance.</p>
+                
+                <div class="contact-grid">
+                    <div class="contact-form-container animate-fadeInUp animate-delay-200">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3><i class="fas fa-envelope icon-left"></i>Get in Touch</h3>
+                            </div>
+                            <div class="card-body">
+                                <form id="contact-form">
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="name">Name</label>
+                                            <input type="text" id="name" name="name" class="form-control" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="email">Email</label>
+                                            <input type="email" id="email" name="email" class="form-control" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="company">Company</label>
+                                        <input type="text" id="company" name="company" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="message">Message</label>
+                                        <textarea id="message" name="message" rows="4" class="form-control" required></textarea>
+                                    </div>
+                                    <div class="form-actions">
+                                        <button type="submit" class="btn btn-primary btn-lg">
+                                            <i class="fas fa-paper-plane"></i>
+                                            Send Message
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-info-container animate-fadeInUp animate-delay-300">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3><i class="fas fa-info-circle icon-left"></i>Contact Information</h3>
+                            </div>
+                            <div class="card-body">
+                                <ul class="contact-info-list">
+                                    <li>
+                                        <i class="fas fa-map-marker-alt"></i>
+                                        <div>
+                                            <h4>Address</h4>
+                                            <p>123 Cyber Street, Tech District<br>San Francisco, CA 94105</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <i class="fas fa-phone-alt"></i>
+                                        <div>
+                                            <h4>Phone</h4>
+                                            <p>+1 (555) 123-4567</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <i class="fas fa-envelope"></i>
+                                        <div>
+                                            <h4>Email</h4>
+                                            <p>info@cybersafe.com</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <i class="fas fa-clock"></i>
+                                        <div>
+                                            <h4>Hours</h4>
+                                            <p>Monday - Friday: 9:00 AM - 5:00 PM</p>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <div class="social-links">
+                                    <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                                    <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="cta-buttons text-center mt-5 animate-fadeInUp animate-delay-400">
+                    <a href="sector-assessment.html" class="btn btn-primary btn-lg">
+                        <i class="fas fa-play-circle"></i>
+                        Get Started
+                    </a>
+                    <a href="index.html" class="btn btn-outline btn-lg">
+                        <i class="fas fa-shield-alt"></i>
+                        Learn More About Our Tools
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>CyberSafe</span>
+                    </div>
+                    <p>Intelligent Cyber Insurance Risk Assessment</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-links-column">
+                        <h4>Platform</h4>
+                        <ul>
+                            <li><a href="index.html">CVSS Assessment</a></li>
+                            <li><a href="expert-assessment.html">Expert Assessment</a></li>
+                            <li><a href="sector-assessment.html">Sector Assessment</a></li>
+                            <li><a href="insurance.html">Insurance</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-links-column">
+                        <h4>Company</h4>
+                        <ul>
+                            <li><a href="about.html">About Us</a></li>
+                            <li><a href="about.html#contact">Contact</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Terms of Service</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 CyberSafe Risk Assessment Platform. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="static/script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check login status
+            const currentUser = checkLoginStatus();
+            const logoutLi = document.getElementById('logoutLi');
+            const loginLi = document.getElementById('loginLi');
+            
+            if (currentUser) {
+                if(logoutLi) logoutLi.style.display = 'block';
+                if(loginLi) loginLi.style.display = 'none';
+                
+                const logoutButton = document.getElementById('logoutButton');
+                if (logoutButton) {
+                    logoutButton.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        logout();
+                    });
+                }
+            } else {
+                if(logoutLi) logoutLi.style.display = 'none';
+                if(loginLi) loginLi.style.display = 'block';
+            }
+            
+            // Mobile menu toggle
+            const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+            const mainNav = document.getElementById('main-nav');
+            
+            if (mobileMenuToggle && mainNav) {
+                mobileMenuToggle.addEventListener('click', () => {
+                    mainNav.classList.toggle('active');
+                });
+            }
+            
+            // Contact form submission
+            const contactForm = document.getElementById('contact-form');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    // In a real application, you would send the form data to a server here
+                    alert('Thank you for your message! We will get back to you soon.');
+                    contactForm.reset();
+                });
+            }
+        });
+    </script>
+</body>
+</html> 

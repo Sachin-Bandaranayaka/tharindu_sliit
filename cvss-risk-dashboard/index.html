@@ -19,14 +19,20 @@
       <div class="container">
         <div class="logo">
           <i class="fas fa-shield-alt"></i>
-          <h1>Risk Assessment</h1>
+          <h1>CyberSafe</h1>
         </div>
         <button class="mobile-menu-toggle" id="mobile-menu-toggle">
           <i class="fas fa-bars"></i>
         </button>
         <nav id="main-nav">
           <ul>
-            <li class="active animate-fadeInLeft animate-delay-100">
+            <li class="animate-fadeInLeft animate-delay-100">
+              <a href="home.html">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+              </a>
+            </li>
+            <li class="active animate-fadeInLeft animate-delay-150">
               <a href="index.html">
                 <i class="fas fa-calculator"></i>
                 <span>CVSS Prediction</span>
@@ -44,10 +50,40 @@
                 <span>Risk Framework</span>
               </a>
             </li>
+            <li class="animate-fadeInLeft animate-delay-400">
+              <a href="expert-assessment.html">
+                <i class="fas fa-user-tie"></i>
+                <span>Expert Assessment</span>
+              </a>
+            </li>
+            <li class="animate-fadeInLeft animate-delay-450">
+              <a href="sector-assessment.html">
+                <i class="fas fa-industry"></i>
+                <span>Sector Assessment</span>
+              </a>
+            </li>
             <li class="animate-fadeInLeft animate-delay-500">
               <a href="dashboard.html">
-                <i class="fas fa-chart-dashboard"></i>
+                <i class="fas fa-chart-line"></i>
                 <span>Risk Dashboard</span>
+              </a>
+            </li>
+            <li class="animate-fadeInLeft animate-delay-550">
+              <a href="about.html">
+                <i class="fas fa-info-circle"></i>
+                <span>About Us</span>
+              </a>
+            </li>
+            <li id="logoutLi" style="display: none;" class="animate-fadeInLeft animate-delay-600">
+              <a href="#" id="logoutButton">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Logout</span>
+              </a>
+            </li>
+            <li id="loginLi" style="display: none;" class="animate-fadeInLeft animate-delay-600">
+              <a href="login.html">
+                <i class="fas fa-sign-in-alt"></i>
+                <span>Login</span>
               </a>
             </li>
           </ul>
@@ -256,7 +292,7 @@
                   Add to Dashboard
                 </button>
                 <button id="view-dashboard" class="btn btn-outline">
-                  <i class="fas fa-chart-dashboard"></i>
+                  <i class="fas fa-chart-line"></i>
                   View Dashboard
                 </button>
               </div>
@@ -269,10 +305,83 @@
 
     <footer>
       <div class="container">
-        <p>&copy; 2023 CVSS Risk Assessment Tool. All rights reserved.</p>
+        <div class="footer-content">
+          <div class="footer-brand">
+            <div class="logo">
+              <i class="fas fa-shield-alt"></i>
+              <span>CyberSafe</span>
+            </div>
+            <p>Intelligent Cyber Insurance Risk Assessment</p>
+          </div>
+          <div class="footer-links">
+            <div class="footer-links-column">
+              <h4>Platform</h4>
+              <ul>
+                <li><a href="index.html">CVSS Assessment</a></li>
+                <li><a href="expert-assessment.html">Expert Assessment</a></li>
+                <li><a href="sector-assessment.html">Sector Assessment</a></li>
+                <li><a href="insurance.html">Insurance</a></li>
+              </ul>
+            </div>
+            <div class="footer-links-column">
+              <h4>Company</h4>
+              <ul>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="about.html#contact">Contact</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms of Service</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2024 CyberSafe Risk Assessment Platform. All rights reserved.</p>
+        </div>
       </div>
     </footer>
 
     <script src="static/script.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        // Check login status
+        const currentUser = checkLoginStatus();
+        const logoutLi = document.getElementById('logoutLi');
+        const loginLi = document.getElementById('loginLi');
+        
+        if (currentUser) {
+          if(logoutLi) logoutLi.style.display = 'block';
+          if(loginLi) loginLi.style.display = 'none';
+          
+          const logoutButton = document.getElementById('logoutButton');
+          if (logoutButton) {
+            logoutButton.addEventListener('click', function(e) {
+              e.preventDefault();
+              logout();
+            });
+          }
+        } else {
+          if(logoutLi) logoutLi.style.display = 'none';
+          if(loginLi) loginLi.style.display = 'block';
+        }
+        
+        // Mobile menu toggle
+        const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+        const mainNav = document.getElementById('main-nav');
+        
+        if (mobileMenuToggle && mainNav) {
+          mobileMenuToggle.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
+          });
+        }
+        
+        // View dashboard button
+        const viewDashboardBtn = document.getElementById('view-dashboard');
+        if (viewDashboardBtn) {
+          viewDashboardBtn.addEventListener('click', function() {
+            window.location.href = 'dashboard.html';
+          });
+        }
+      });
+    </script>
   </body>
 </html>

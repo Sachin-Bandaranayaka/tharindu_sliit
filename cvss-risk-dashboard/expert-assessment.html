@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expert-Based Risk Assessment</title>
+    <link rel="stylesheet" href="static/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+</head>
+<body>
+    <header class="animate-fadeInDown">
+      <div class="container">
+        <div class="logo">
+          <i class="fas fa-shield-alt"></i>
+          <h1>Risk Assessment</h1>
+        </div>
+        <button class="mobile-menu-toggle" id="mobile-menu-toggle">
+          <i class="fas fa-bars"></i>
+        </button>
+        <nav id="main-nav">
+          <ul>
+            <li class="animate-fadeInLeft animate-delay-100">
+              <a href="index.html">
+                <i class="fas fa-calculator"></i>
+                <span>CVSS Prediction</span>
+              </a>
+            </li>
+            <li class="animate-fadeInLeft animate-delay-200">
+              <a href="insurance.html">
+                <i class="fas fa-file-invoice-dollar"></i>
+                <span>Insurance Claims</span>
+              </a>
+            </li>
+            <li class="animate-fadeInLeft animate-delay-300">
+              <a href="risk-framework.html">
+                <i class="fas fa-sitemap"></i>
+                <span>Risk Framework</span>
+              </a>
+            </li>
+            <li class="active animate-fadeInLeft animate-delay-400">
+              <a href="expert-assessment.html">
+                <i class="fas fa-user-tie"></i>
+                <span>Expert Assessment</span>
+              </a>
+            </li>
+            <li class="animate-fadeInLeft animate-delay-450">
+              <a href="sector-assessment.html">
+                <i class="fas fa-industry"></i>
+                <span>Sector Assessment</span>
+              </a>
+            </li>
+            <li class="animate-fadeInLeft animate-delay-500">
+              <a href="dashboard.html">
+                <i class="fas fa-chart-dashboard"></i>
+                <span>Risk Dashboard</span>
+              </a>
+            </li>
+            <li id="logoutLi" style="display: none;" class="animate-fadeInLeft animate-delay-600">
+                <a href="#" id="logoutButton">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </a>
+            </li>
+            <li id="loginLi" style="display: none;" class="animate-fadeInLeft animate-delay-600">
+                <a href="login.html">
+                    <i class="fas fa-sign-in-alt"></i>
+                    <span>Login</span>
+                </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <div class="container">
+        <section class="intro-section animate-fadeInUp">
+          <div class="intro-content">
+            <h2 class="gradient-text">Expert-Based Risk Assessment</h2>
+            <p class="text-lg">
+              Comprehensive risk assessment platform for cybersecurity experts to evaluate and analyze organizational security posture.
+            </p>
+          </div>
+        </section>
+
+          <section class="card animate-fadeInUp animate-delay-300" id="assessmentFormContainer" style="display: none;">
+            <div class="card-header">
+              <div class="card-icon">
+                <i class="fas fa-clipboard-check"></i>
+              </div>
+              <h3>Risk Assessment Form</h3>
+            </div>
+            <div class="card-content">
+              <div id="userInfo" class="alert alert-success" style="display: none;"></div>
+              <div id="errorMessage" class="alert alert-danger" style="display: none;"></div>
+              <div id="successMessage" class="alert alert-success" style="display: none;"></div>
+
+              <form id="expertRiskForm">
+                <div class="form-section">
+                  <div class="card">
+                    <div class="card-header">
+                      <h4>Organization Information</h4>
+                    </div>
+                    <div class="card-body">
+                      <div class="form-row">
+                        <div class="form-group">
+                          <label for="organizationSize">Organization Size:</label>
+                          <select id="organizationSize" name="organization_size" class="form-control" required>
+                                    <option value="">Select Size</option>
+                                    <option value="Small (1-50)">Small (1-50)</option>
+                                    <option value="Medium (51-250)">Medium (51-250)</option>
+                                    <option value="Large (251-1000)">Large (251-1000)</option>
+                                    <option value="Enterprise (1000+)">Enterprise (1000+)</option>
+                                  </select>
+                              </div>
+                              <div class="form-group">
+                                  <label for="industryType">Industry Type:</label>
+                                  <select id="industryType" name="industry_type" class="form-control" required>
+                                    <option value="">Select Industry</option>
+                                    <option value="Financial Services">Financial Services</option>
+                                    <option value="Healthcare">Healthcare</option>
+                                    <option value="Government">Government</option>
+                                    <option value="Technology">Technology</option>
+                                    <option value="Manufacturing">Manufacturing</option>
+                                    <option value="Retail">Retail</option>
+                                    <option value="Education">Education</option>
+                                    <option value="Energy">Energy</option>
+                                  </select>
+                            </div>
+                          </div>
+                          <div class="form-row">
+                            <div class="form-group">
+                                <label for="no_of_employees">Number of Employees:</label>
+                                <input type="number" id="no_of_employees" name="no_of_employees" class="form-control" placeholder="e.g., 150" required>
+                            </div>
+                          </div>
+                      </div>
+                    </div>
+                    </div>
+
+                    <div class="card">
+                      <div class="card-header">
+                          <h3>Security Policies & Procedures</h3>
+                      </div>
+                      <div class="card-body">
+                          <div class="form-row">
+                            <div class="form-group">
+                                <label for="infoSecPolicy">Information Security Policy Availability:</label>
+                                <select id="infoSecPolicy" name="info_sec_policy_availability" class="form-control" required>
+                                    <option value="">Select Option</option>
+                                    <option value="Yes">Yes</option>
+                                    <option value="No">No</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="incidentResponsePlan">Incident Response Plan:</label>
+                                <select id="incidentResponsePlan" name="incident_response_plan" class="form-control" required>
+                                    <option value="">Select Option</option>
+                                    <option value="Yes">Yes</option>
+                                    <option value="No">No</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="incidentPlanTesting">Incident Plan Testing Frequency:</label>
+                                <select id="incidentPlanTesting" name="incident_plan_testing" class="form-control" required>
+                                    <option value="">Select Frequency</option>
+                                    <option value="Monthly">Monthly</option>
+                                    <option value="Quarterly">Quarterly</option>
+                                    <option value="Annually">Annually</option>
+                                    <option value="Never">Never</option>
+                                  </select>
+                            </div>
+                          </div>
+                      </div>
+                    </div>
+                    </div>
+
+                    <div class="card">
+                      <div class="card-header">
+                          <h3>Access Controls & Security Measures</h3>
+                      </div>
+                      <div class="card-body">
+                          <div class="form-row">
+                            <div class="form-group">
+                                <label for="physicalAccessControl">Physical Access Control Implementation:</label>
+                                <select id="physicalAccessControl" name="physical_access_control_implementation" class="form-control" required>
+                                    <option value="">Select Implementation</option>
+                                    <option value="Fully Implemented">Fully Implemented</option>
+                                    <option value="Partially Implemented">Partially Implemented</option>
+                                    <option value="Not Implemented">Not Implemented</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="remoteAccessSecurity">Remote Access Security Measures:</label>
+                                <select id="remoteAccessSecurity" name="remote_access_security_measures" class="form-control" required>
+                                    <option value="">Select Measures</option>
+                                    <option value="MFA + VPN">MFA + VPN</option>
+                                    <option value="VPN">VPN</option>
+                                    <option value="Basic Authentication">Basic Authentication</option>
+                                    <option value="None">None</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="backupRecovery">Backup and Recovery Procedures:</label>
+                                <select id="backupRecovery" name="backup_and_recovery_procedures" class="form-control" required>
+                                    <option value="">Select Procedures</option>
+                                    <option value="Regular">Regular</option>
+                                    <option value="Irregular">Irregular</option>
+                                    <option value="None">None</option>
+                                  </select>
+                            </div>
+                          </div>
+                      </div>
+                    </div>
+                    </div>
+
+                    <div class="card">
+                      <div class="card-header">
+                          <h3>Training & Awareness</h3>
+                      </div>
+                      <div class="card-body">
+                          <div class="form-row">
+                            <div class="form-group">
+                                <label for="employeeTraining">Employee Training on Information Security:</label>
+                                <select id="employeeTraining" name="employee_training_on_information_security" class="form-control" required>
+                                    <option value="">Select Frequency</option>
+                                    <option value="Regular">Regular</option>
+                                    <option value="Occasionally">Occasionally</option>
+                                    <option value="Never">Never</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="dataEncryption">Data Encryption Practice:</label>
+                                <select id="dataEncryption" name="data_encryption_practice" class="form-control" required>
+                                    <option value="">Select Practice</option>
+                                    <option value="Both">Both (At Rest & In Transit)</option>
+                                    <option value="At Rest">At Rest</option>
+                                    <option value="In Transit">In Transit</option>
+                                    <option value="None">None</option>
+                                  </select>
+                            </div>
+                          </div>
+                      </div>
+                    </div>
+                    </div>
+
+                    <div class="card">
+                      <div class="card-header">
+                          <h3>Technical Security Controls</h3>
+                      </div>
+                      <div class="card-body">
+                          <div class="form-row">
+                            <div class="form-group">
+                                <label for="antivirusSoftware">Antivirus Software:</label>
+                                <select id="antivirusSoftware" name="antivirus_software" class="form-control" required>
+                                    <option value="">Select Option</option>
+                                    <option value="Yes">Yes</option>
+                                    <option value="No">No</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="vulnerabilityScanning">Vulnerability Scanning Frequency:</label>
+                                <select id="vulnerabilityScanning" name="vulnerability_scanning_frequency" class="form-control" required>
+                                    <option value="">Select Frequency</option>
+                                    <option value="Continuous">Continuous</option>
+                                    <option value="Monthly">Monthly</option>
+                                    <option value="Quarterly">Quarterly</option>
+                                    <option value="Annually">Annually</option>
+                                    <option value="Never">Never</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="riskAssessmentFreq">Risk Assessment Frequency:</label>
+                                <select id="riskAssessmentFreq" name="risk_assessment_frequency" class="form-control" required>
+                                    <option value="">Select Frequency</option>
+                                    <option value="Quarterly">Quarterly</option>
+                                    <option value="Biannually">Biannually</option>
+                                    <option value="Annually">Annually</option>
+                                    <option value="Never">Never</option>
+                                  </select>
+                            </div>
+                          </div>
+                      </div>
+                    </div>
+                    </div>
+
+                    <div class="card">
+                      <div class="card-header">
+                          <h3>Governance & Compliance</h3>
+                      </div>
+                      <div class="card-body">
+                          <div class="form-row">
+                            <div class="form-group">
+                                <label for="incidentReporting">Incident Reporting Mechanism:</label>
+                                <select id="incidentReporting" name="incident_reporting_mechanism" class="form-control" required>
+                                    <option value="">Select Mechanism</option>
+                                    <option value="Formal Reporting">Formal Reporting</option>
+                                    <option value="Informal Reporting">Informal Reporting</option>
+                                    <option value="None">None</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="thirdPartyRisk">Third-party Risk Management:</label>
+                                <select id="thirdPartyRisk" name="third_party_risk_management" class="form-control" required>
+                                    <option value="">Select Status</option>
+                                    <option value="Exists">Exists</option>
+                                    <option value="Does Not Exist">Does Not Exist</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="complianceMonitoring">Compliance Monitoring Frequency:</label>
+                                <select id="complianceMonitoring" name="compliance_monitoring_frequency" class="form-control" required>
+                                    <option value="">Select Frequency</option>
+                                    <option value="Continuous">Continuous</option>
+                                    <option value="Monthly">Monthly</option>
+                                    <option value="Quarterly">Quarterly</option>
+                                    <option value="Annually">Annually</option>
+                                    <option value="None">None</option>
+                                  </select>
+                            </div>
+                          </div>
+                      </div>
+                    </div>
+                    </div>
+
+                    <div class="card">
+                      <div class="card-header">
+                          <h3>Asset Management & Business Continuity</h3>
+                      </div>
+                      <div class="card-body">
+                          <div class="form-row">
+                            <div class="form-group">
+                                <label for="assetInventory">Information Asset Inventory:</label>
+                                <select id="assetInventory" name="information_asset_inventory" class="form-control" required>
+                                    <option value="">Select Status</option>
+                                    <option value="Existence">Existence</option>
+                                    <option value="Nonexistence">Nonexistence</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="businessContinuity">Business Continuity Management:</label>
+                                <select id="businessContinuity" name="business_continuity_management" class="form-control" required>
+                                    <option value="">Select Implementation</option>
+                                    <option value="Fully Implemented">Fully Implemented</option>
+                                    <option value="Partially Implemented">Partially Implemented</option>
+                                    <option value="Not Implemented">Not Implemented</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="securityAudit">Security Audit History:</label>
+                                <select id="securityAudit" name="security_audit_history" class="form-control" required>
+                                    <option value="">Select History</option>
+                                    <option value="Regular">Regular</option>
+                                    <option value="Occasional">Occasional</option>
+                                    <option value="Never">Never</option>
+                                  </select>
+                            </div>
+                          </div>
+                      </div>
+                    </div>
+                    </div>
+
+                    <div class="text-center" style="margin-top: 30px;">
+                        <button type="submit" class="btn btn-primary">Assess Risk</button>
+                    </div>
+                </form>
+            </div>
+
+            <div id="results" class="results" style="display:none;"></div>
+        </div>
+    </div>
+
+    <!-- Remove script.js reference to avoid conflicts -->
+    <!-- <script src="static/script.js" defer></script> -->
+    <script>
+        let currentUser = null;
+
+        document.addEventListener('DOMContentLoaded', function() {
+            currentUser = checkLoginStatus();
+
+            if (currentUser) {
+                document.getElementById('assessmentFormContainer').style.display = 'block';
+                const userInfo = document.getElementById('userInfo');
+                userInfo.textContent = `Welcome, ${currentUser.username}!`;
+                userInfo.style.display = 'block';
+                document.getElementById('logoutLi').style.display = 'block';
+                document.getElementById('loginLi').style.display = 'none';
+
+                const logoutButton = document.getElementById('logoutButton');
+                if (logoutButton) {
+                    logoutButton.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        logout();
+                    });
+                }
+            } else {
+                document.getElementById('logoutLi').style.display = 'none';
+                document.getElementById('loginLi').style.display = 'block';
+            }
+
+            const expertRiskForm = document.getElementById('expertRiskForm');
+            if(expertRiskForm) {
+                expertRiskForm.addEventListener('submit', async function(e) {
+                    e.preventDefault();
+                    if (!currentUser) {
+                        showMessage('Please login to submit an assessment.', 'error');
+                        return;
+                    }
+                    
+                    const formData = new FormData(e.target);
+                    const data = {};
+                    for (let [key, value] of formData.entries()) {
+                        data[key] = value;
+                    }
+                    
+                    try {
+                        const response = await fetch('/api/expert-risk-predict', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify(data)
+                        });
+                        
+                        const result = await response.json();
+                        
+                        if (response.ok) {
+                            displayResults(result);
+                        } else {
+                            showMessage(result.error || 'Assessment failed. Ensure all fields are filled correctly.', 'error');
+                        }
+                    } catch (error) {
+                        console.error("Assessment submission error:", error);
+                        showMessage('Network error during assessment. Please try again.', 'error');
+                    }
+                });
+            }
+        });
+        
+        function showMessage(message, type) {
+            const errorDiv = document.getElementById('errorMessage');
+            const successDiv = document.getElementById('successMessage');
+            
+            if (!errorDiv || !successDiv) return;
+
+            errorDiv.style.display = 'none';
+            successDiv.style.display = 'none';
+            
+            if (type === 'error') {
+                errorDiv.textContent = message;
+                errorDiv.style.display = 'block';
+            } else {
+                successDiv.textContent = message;
+                successDiv.style.display = 'block';
+            }
+            
+            setTimeout(() => {
+                if (errorDiv) errorDiv.style.display = 'none';
+                if (successDiv) successDiv.style.display = 'none';
+            }, 5000);
+        }
+
+        /**
+         * Dedicated displayResults function for expert assessment page
+         */
+        function displayResults(result) {
+            const resultsDiv = document.getElementById('results');
+            if (!resultsDiv) return;
+            
+            let riskClass = 'risk-low';
+            let riskIcon = 'fas fa-shield-check';
+            let riskBgClass = 'risk-low-bg';
+            
+            if (result.risk_level === 'Medium') {
+                riskClass = 'risk-medium';
+                riskIcon = 'fas fa-exclamation-triangle';
+                riskBgClass = 'risk-medium-bg';
+            } else if (result.risk_level === 'High') {
+                riskClass = 'risk-high';
+                riskIcon = 'fas fa-shield-exclamation';
+                riskBgClass = 'risk-high-bg';
+            }
+            
+            // Prediction method indicator
+            const methodBadge = result.prediction_method === 'rule-based' 
+                ? '<span class="badge badge-warning"><i class="fas fa-cogs"></i> Rule-Based Assessment</span>'
+                : '<span class="badge badge-success"><i class="fas fa-brain"></i> ML-Based Assessment</span>';
+            
+            let countermeasuresHtml = '';
+            if (result.countermeasures && result.countermeasures.length > 0) {
+                countermeasuresHtml = `
+                    <div class="card animate-fadeInUp animate-delay-200">
+                        <div class="card-header">
+                            <div class="card-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <h3>Recommended Security Countermeasures</h3>
+                        </div>
+                        <div class="card-content">
+                            <div class="countermeasures-grid">
+                                ${result.countermeasures.map((cm, index) => `
+                                    <div class="countermeasure-card animate-fadeInUp" style="animation-delay: ${0.3 + index * 0.1}s;">
+                                        <div class="countermeasure-header">
+                                            <div class="countermeasure-icon">
+                                                <i class="fas fa-exclamation-circle"></i>
+                                            </div>
+                                            <div class="countermeasure-title">
+                                                <h4>${cm.category}</h4>
+                                                <span class="countermeasure-issue">${cm.issue}</span>
+                                            </div>
+                                        </div>
+                                        <div class="countermeasure-content">
+                                            <p>${cm.countermeasure}</p>
+                                            <a href="${cm.reference}" target="_blank" class="countermeasure-link">
+                                                <i class="fas fa-external-link-alt"></i>
+                                                MITRE ATT&CK Reference
+                                            </a>
+                                        </div>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+            
+            resultsDiv.innerHTML = `
+                <div class="results-container animate-fadeInUp">
+                    <!-- Results Header -->
+                    <div class="results-header">
+                        <div class="results-title">
+                            <i class="fas fa-chart-line"></i>
+                            <h2>Risk Assessment Results</h2>
+                        </div>
+                        ${methodBadge}
+                    </div>
+                    
+                    <!-- Main Risk Score Display -->
+                    <div class="card risk-score-card ${riskBgClass} animate-fadeInUp animate-delay-100">
+                        <div class="risk-score-visual">
+                            <div class="risk-icon">
+                                <i class="${riskIcon}"></i>
+                            </div>
+                            <div class="risk-details">
+                                <div class="risk-level ${riskClass}">
+                                    ${result.risk_level} Risk
+                                </div>
+                                <div class="risk-metrics">
+                                    <div class="metric">
+                                        <span class="metric-label">Risk Score</span>
+                                        <span class="metric-value">${result.risk_score}/100</span>
+                                    </div>
+                                    <div class="metric">
+                                        <span class="metric-label">Confidence</span>
+                                        <span class="metric-value">${result.confidence}%</span>
+                                    </div>
+                                    <div class="metric">
+                                        <span class="metric-label">Assessment Date</span>
+                                        <span class="metric-value">${new Date(result.timestamp).toLocaleDateString()}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="risk-progress-bar">
+                            <div class="progress-fill ${riskClass}" style="width: ${result.risk_score}%;"></div>
+                        </div>
+                    </div>
+                    
+                    ${countermeasuresHtml}
+                    
+                    <!-- Action Buttons -->
+                    <div class="results-actions animate-fadeInUp animate-delay-300">
+                        <button class="btn btn-primary" id="viewHistoryBtn">
+                            <i class="fas fa-history"></i>
+                            View Assessment History
+                        </button>
+                        <button class="btn btn-secondary" onclick="window.location.href='insurance.html'">
+                            <i class="fas fa-file-invoice-dollar"></i>
+                            Get Insurance Quote
+                        </button>
+                        <button class="btn btn-outline" onclick="window.print()">
+                            <i class="fas fa-print"></i>
+                            Print Report
+                        </button>
+                    </div>
+                </div>
+            `;
+            
+            const viewHistoryBtn = document.getElementById('viewHistoryBtn');
+            if(viewHistoryBtn) {
+                viewHistoryBtn.addEventListener('click', viewHistory);
+            }
+            
+            resultsDiv.style.display = 'block';
+            resultsDiv.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        /**
+         * Functions imported from script.js that are needed
+         */
+        function checkLoginStatus(redirectToLogin = true) {
+            const userString = localStorage.getItem('currentUser');
+            if (!userString) {
+                if (redirectToLogin && !window.location.pathname.endsWith('login.html')) {
+                    const returnUrl = window.location.pathname + window.location.search;
+                    window.location.href = 'login.html?returnUrl=' + encodeURIComponent(returnUrl);
+                }
+                return null;
+            }
+            try {
+                const user = JSON.parse(userString);
+                return user;
+            } catch (error) {
+                console.error("Error parsing currentUser from localStorage:", error);
+                localStorage.removeItem('currentUser');
+                if (redirectToLogin && !window.location.pathname.endsWith('login.html')) {
+                    const returnUrl = window.location.pathname + window.location.search;
+                    window.location.href = 'login.html?returnUrl=' + encodeURIComponent(returnUrl);
+                }
+                return null;
+            }
+        }
+
+        async function logout() {
+            try {
+                const response = await fetch('/api/logout', { method: 'POST' });
+                if (!response.ok) {
+                    console.warn('Logout API call failed or user was already logged out on server.');
+                }
+            } catch (error) {
+                console.error('Logout API call failed:', error);
+            }
+            localStorage.removeItem('currentUser');
+            window.location.href = 'login.html';
+        }
+
+        async function viewHistory() {
+            if (!currentUser) {
+                showMessage('Please login to view history.', 'error');
+                return;
+            }
+            try {
+                const response = await fetch('/api/risk-history');
+                const data = await response.json();
+                
+                const resultsDiv = document.getElementById('results');
+                if (!resultsDiv) return;
+
+                if (response.ok) {
+                    let historyHtml = '<h3>Assessment History</h3>';
+                    if (data.assessments && data.assessments.length === 0) {
+                        historyHtml += '<p>No previous assessments found.</p>';
+                    } else if (data.assessments) {
+                        historyHtml += data.assessments.map(assessment => `
+                            <div class="countermeasure-item">
+                                <h4>Risk Level: ${assessment.risk_level}</h4>
+                                <p>Date: ${new Date(assessment.timestamp).toLocaleDateString()}</p>
+                                <p>Risk Score: ${assessment.risk_score} | Confidence: ${assessment.confidence}%</p>
+                            </div>
+                        `).join('');
+                    } else {
+                        historyHtml += '<p>Could not load history data.</p>';
+                    }
+                    const historyDisplayDiv = document.createElement('div');
+                    historyDisplayDiv.className = 'history-section countermeasures';
+                    historyDisplayDiv.innerHTML = historyHtml;
+                    resultsDiv.appendChild(historyDisplayDiv);
+
+                } else {
+                    showMessage(data.error || 'Failed to load history', 'error');
+                }
+            } catch (error) {
+                console.error("History fetch error:", error);
+                showMessage('Network error. Please try again.', 'error');
+            }
+        }
+    </script>
+</body>
+</html>

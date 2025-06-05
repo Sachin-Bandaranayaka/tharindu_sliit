@@ -421,3 +421,65 @@ function addAssessmentToDashboard() {
     // Show success message
     alert('Assessment added to dashboard successfully!');
 }
+
+/**
+ * Checks if a user is currently logged in by checking localStorage.
+ * Optionally redirects to login page if not authenticated.
+ * @param {boolean} redirectToLogin - If true, redirects to login.html if not authenticated.
+ * @returns {Object|null} The user object if logged in, otherwise null.
+ */
+function checkLoginStatus(redirectToLogin = true) {
+    const userString = localStorage.getItem('currentUser');
+    if (!userString) {
+        if (redirectToLogin && !window.location.pathname.endsWith('login.html')) {
+            const returnUrl = window.location.pathname + window.location.search;
+            window.location.href = 'login.html?returnUrl=' + encodeURIComponent(returnUrl);
+        }
+        return null;
+    }
+    try {
+        const user = JSON.parse(userString);
+        // Optionally, you could add a check here to verify the session with the backend
+        // For now, we trust localStorage if a user object exists.
+        return user;
+    } catch (error) {
+        console.error("Error parsing currentUser from localStorage:", error);
+        localStorage.removeItem('currentUser'); // Clear corrupted item
+        if (redirectToLogin && !window.location.pathname.endsWith('login.html')) {
+            const returnUrl = window.location.pathname + window.location.search;
+            window.location.href = 'login.html?returnUrl=' + encodeURIComponent(returnUrl);
+        }
+        return null;
+    }
+}
+
+/**
+ * Logs the current user out.
+ * Clears client-side session and redirects to login page.
+ */
+async function logout() {
+    try {
+        const response = await fetch('/api/logout', { method: 'POST' });
+        if (!response.ok) {
+            console.warn('Logout API call failed or user was already logged out on server.');
+        }
+    } catch (error) {
+        console.error('Logout API call failed:', error);
+        // Proceed with client-side logout anyway
+    }
+    localStorage.removeItem('currentUser');
+    // Redirect to login page, potentially with a message or to home
+    window.location.href = 'login.html'; 
+}
+
+// Expose functions to global window object if needed by inline event handlers directly,
+// though it's better to attach event listeners programmatically.
+// window.checkLoginStatus = checkLoginStatus;
+// window.logout = logout;
+
+// Add a global event listener for logout buttons if a common class is used e.g. class="logout-button"
+// document.addEventListener('click', function(event) {
+//    if (event.target.matches('.logout-button')) {
+//        logout();
+//    }
+//});

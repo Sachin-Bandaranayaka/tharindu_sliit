@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberSafe - Intelligent Cyber Insurance Risk Assessment</title>
+    <link rel="stylesheet" href="static/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>CyberSafe</span>
+                </div>
+                <nav id="main-nav">
+                    <ul>
+                        <li class="active"><a href="home.html"><i class="fas fa-home"></i> Home</a></li>
+                        <li><a href="index.html"><i class="fas fa-calculator"></i> CVSS Assessment</a></li>
+                        <li><a href="expert-assessment.html"><i class="fas fa-user-tie"></i> Expert Assessment</a></li>
+                        <li><a href="sector-assessment.html"><i class="fas fa-industry"></i> Sector Assessment</a></li>
+                        <li><a href="insurance.html"><i class="fas fa-shield-alt"></i> Insurance</a></li>
+                        <li><a href="dashboard.html"><i class="fas fa-chart-line"></i> Dashboard</a></li>
+                        <li><a href="about.html"><i class="fas fa-info-circle"></i> About Us</a></li>
+                        <li id="logoutLi" style="display: none;">
+                            <a href="#" id="logoutButton">
+                                <i class="fas fa-sign-out-alt"></i>
+                                <span>Logout</span>
+                            </a>
+                        </li>
+                        <li id="loginLi" style="display: none;">
+                            <a href="login.html">
+                                <i class="fas fa-sign-in-alt"></i>
+                                <span>Login</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <button class="mobile-menu-toggle" id="mobile-menu-toggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="container">
+                <div class="hero-content animate-fadeInUp">
+                    <h1 class="text-gradient hero-title">Predict. Protect. Insure.</h1>
+                    <p class="hero-subtitle">Empowering businesses with AI-driven cyber risk insights for smarter insurance decisions.</p>
+                    <div class="hero-actions">
+                        <a href="sector-assessment.html" class="btn btn-primary btn-xl">
+                            <i class="fas fa-shield-alt"></i>
+                            Start Risk Assessment
+                        </a>
+                        <a href="about.html" class="btn btn-outline btn-xl">
+                            <i class="fas fa-info-circle"></i>
+                            Learn More
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Introduction Section -->
+        <section class="intro-section">
+            <div class="container">
+                <div class="intro-content animate-fadeInUp animate-delay-200">
+                    <h2 class="text-gradient">Next-Generation Risk Assessment</h2>
+                    <p class="text-lg">CyberSafe is a next-generation platform that leverages machine learning and historical cyber incident data to assess cybersecurity risks and tailor insurance solutions to your unique business profile.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features-section">
+            <div class="container">
+                <h2 class="section-title text-center animate-fadeInUp">Key Features</h2>
+                
+                <div class="features-grid">
+                    <div class="feature-card animate-fadeInUp animate-delay-100">
+                        <div class="feature-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h3>AI-Powered Risk Scoring</h3>
+                        <p>Utilizes advanced machine learning algorithms trained on over two decades of cyber incident data (2000–2024) to evaluate your organization's cyber risk posture.</p>
+                    </div>
+                    
+                    <div class="feature-card animate-fadeInUp animate-delay-200">
+                        <div class="feature-icon">
+                            <i class="fas fa-file-shield"></i>
+                        </div>
+                        <h3>Customized Insurance Recommendations</h3>
+                        <p>Aligns your risk profile with optimal cyber insurance coverage options based on predictive modeling.</p>
+                    </div>
+                    
+                    <div class="feature-card animate-fadeInUp animate-delay-300">
+                        <div class="feature-icon">
+                            <i class="fas fa-chart-network"></i>
+                        </div>
+                        <h3>Interactive Risk Visualization</h3>
+                        <p>Offers intuitive dashboards to visualize potential attack scenarios and vulnerabilities.</p>
+                    </div>
+                    
+                    <div class="feature-card animate-fadeInUp animate-delay-400">
+                        <div class="feature-icon">
+                            <i class="fas fa-clipboard-check"></i>
+                        </div>
+                        <h3>Compliance Support</h3>
+                        <p>Assists in meeting industry standards and regulatory requirements.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Choose Us Section -->
+        <section class="why-choose-section">
+            <div class="container">
+                <h2 class="section-title text-center animate-fadeInUp">Why Choose CyberSafe?</h2>
+                <p class="section-subtitle text-center animate-fadeInUp animate-delay-100">Traditional insurance models often fall short in addressing the dynamic nature of cyber threats. CyberSafe bridges this gap by providing:</p>
+                
+                <div class="benefits-grid">
+                    <div class="benefit-card animate-fadeInUp animate-delay-200">
+                        <div class="benefit-icon">
+                            <i class="fas fa-bullseye"></i>
+                        </div>
+                        <div class="benefit-content">
+                            <h3>Accurate Risk Evaluation</h3>
+                            <p>Ensures precise underwriting by identifying specific vulnerabilities through data-driven insights.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="benefit-card animate-fadeInUp animate-delay-300">
+                        <div class="benefit-icon">
+                            <i class="fas fa-coins"></i>
+                        </div>
+                        <div class="benefit-content">
+                            <h3>Cost Efficiency</h3>
+                            <p>Reduces underwriting expenses through automation and standardized assessments.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="benefit-card animate-fadeInUp animate-delay-400">
+                        <div class="benefit-icon">
+                            <i class="fas fa-shield-check"></i>
+                        </div>
+                        <div class="benefit-content">
+                            <h3>Enhanced Cyber Resilience</h3>
+                            <p>Improves your organization's ability to withstand and recover from cyber incidents.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to Action Section -->
+        <section class="cta-section">
+            <div class="container">
+                <div class="cta-content animate-fadeInUp">
+                    <h2>Ready to fortify your cyber defenses and optimize your insurance coverage?</h2>
+                    <div class="cta-buttons">
+                        <a href="sector-assessment.html" class="btn btn-primary btn-lg">
+                            <i class="fas fa-play-circle"></i>
+                            Request a Demo
+                        </a>
+                        <a href="about.html#contact" class="btn btn-outline btn-lg">
+                            <i class="fas fa-envelope"></i>
+                            Contact Us
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Chatbot Interface -->
+    <div class="chatbot-container">
+        <button id="chatbot-toggle" class="chatbot-toggle">
+            <i class="fas fa-comment-dots"></i>
+        </button>
+        <div id="chatbot-window" class="chatbot-window">
+            <div class="chatbot-header">
+                <div class="chatbot-title">
+                    <i class="fas fa-robot"></i>
+                    <span>CyberSafe Assistant</span>
+                </div>
+                <button id="chatbot-close" class="chatbot-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="chatbot-messages" id="chatbot-messages">
+                <div class="message bot-message">
+                    <div class="message-content">
+                        <p>👋 Hello! I'm your CyberSafe Assistant. How can I help you with cyber insurance risk assessment today?</p>
+                    </div>
+                </div>
+            </div>
+            <div class="chatbot-input">
+                <input type="text" id="chatbot-input-field" placeholder="Type your question here...">
+                <button id="chatbot-send">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>CyberSafe</span>
+                    </div>
+                    <p>Intelligent Cyber Insurance Risk Assessment</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-links-column">
+                        <h4>Platform</h4>
+                        <ul>
+                            <li><a href="index.html">CVSS Assessment</a></li>
+                            <li><a href="expert-assessment.html">Expert Assessment</a></li>
+                            <li><a href="sector-assessment.html">Sector Assessment</a></li>
+                            <li><a href="insurance.html">Insurance</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-links-column">
+                        <h4>Company</h4>
+                        <ul>
+                            <li><a href="about.html">About Us</a></li>
+                            <li><a href="about.html#contact">Contact</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Terms of Service</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 CyberSafe Risk Assessment Platform. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="static/script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check login status
+            const currentUser = checkLoginStatus();
+            const logoutLi = document.getElementById('logoutLi');
+            const loginLi = document.getElementById('loginLi');
+            
+            if (currentUser) {
+                if(logoutLi) logoutLi.style.display = 'block';
+                if(loginLi) loginLi.style.display = 'none';
+                
+                const logoutButton = document.getElementById('logoutButton');
+                if (logoutButton) {
+                    logoutButton.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        logout();
+                    });
+                }
+            } else {
+                if(logoutLi) logoutLi.style.display = 'none';
+                if(loginLi) loginLi.style.display = 'block';
+            }
+            
+            // Mobile menu toggle
+            const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+            const mainNav = document.getElementById('main-nav');
+            
+            if (mobileMenuToggle && mainNav) {
+                mobileMenuToggle.addEventListener('click', () => {
+                    mainNav.classList.toggle('active');
+                });
+            }
+
+            // Chatbot functionality
+            const chatbotToggle = document.getElementById('chatbot-toggle');
+            const chatbotWindow = document.getElementById('chatbot-window');
+            const chatbotClose = document.getElementById('chatbot-close');
+            const chatbotMessages = document.getElementById('chatbot-messages');
+            const chatbotInput = document.getElementById('chatbot-input-field');
+            const chatbotSend = document.getElementById('chatbot-send');
+            
+            // Toggle chatbot window
+            chatbotToggle.addEventListener('click', () => {
+                chatbotWindow.classList.toggle('active');
+                chatbotToggle.classList.toggle('hidden');
+                if (chatbotWindow.classList.contains('active')) {
+                    chatbotInput.focus();
+                }
+            });
+            
+            // Close chatbot window
+            chatbotClose.addEventListener('click', () => {
+                chatbotWindow.classList.remove('active');
+                chatbotToggle.classList.remove('hidden');
+            });
+            
+            // Send message function
+            function sendMessage() {
+                const message = chatbotInput.value.trim();
+                if (message) {
+                    // Add user message to chat
+                    addMessage(message, 'user');
+                    chatbotInput.value = '';
+                    
+                    // Show typing indicator
+                    showTypingIndicator();
+                    
+                    // Process with Gemini API
+                    processWithGemini(message);
+                }
+            }
+            
+            // Send message on button click
+            chatbotSend.addEventListener('click', sendMessage);
+            
+            // Send message on Enter key
+            chatbotInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    sendMessage();
+                }
+            });
+            
+            // Add message to chat
+            function addMessage(text, sender) {
+                const messageDiv = document.createElement('div');
+                messageDiv.className = `message ${sender}-message`;
+                
+                const contentDiv = document.createElement('div');
+                contentDiv.className = 'message-content';
+                
+                const paragraph = document.createElement('p');
+                paragraph.textContent = text;
+                
+                contentDiv.appendChild(paragraph);
+                messageDiv.appendChild(contentDiv);
+                chatbotMessages.appendChild(messageDiv);
+                
+                // Scroll to bottom
+                chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+            }
+            
+            // Show typing indicator
+            function showTypingIndicator() {
+                const typingDiv = document.createElement('div');
+                typingDiv.className = 'message bot-message typing-indicator';
+                typingDiv.id = 'typing-indicator';
+                
+                const contentDiv = document.createElement('div');
+                contentDiv.className = 'message-content';
+                
+                const dotsDiv = document.createElement('div');
+                dotsDiv.className = 'typing-dots';
+                
+                for (let i = 0; i < 3; i++) {
+                    const dot = document.createElement('span');
+                    dotsDiv.appendChild(dot);
+                }
+                
+                contentDiv.appendChild(dotsDiv);
+                typingDiv.appendChild(contentDiv);
+                chatbotMessages.appendChild(typingDiv);
+                
+                // Scroll to bottom
+                chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+            }
+            
+            // Remove typing indicator
+            function removeTypingIndicator() {
+                const typingIndicator = document.getElementById('typing-indicator');
+                if (typingIndicator) {
+                    typingIndicator.remove();
+                }
+            }
+            
+            // Process message with Gemini API
+            async function processWithGemini(message) {
+                const API_KEY = "AIzaSyDB69K-g5WujALQHskEowePNn6qc1vVPzA";
+                const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`;
+                
+                // Context about CyberSafe to help Gemini provide relevant answers
+                const systemContext = `
+                You are a helpful assistant for CyberSafe, a cyber insurance risk assessment platform.
+                CyberSafe helps businesses assess their cybersecurity risks using:
+                1. CVSS Assessment - Common Vulnerability Scoring System evaluation
+                2. Expert Assessment - Detailed analysis by security professionals
+                3. Sector Assessment - Industry-specific risk evaluation
+                
+                The platform provides AI-powered risk scoring, customized insurance recommendations,
+                interactive risk visualization, and compliance support.
+                
+                Keep responses concise, helpful, and focused on cyber insurance and risk assessment.
+                If you don't know something specific about CyberSafe's offerings, provide general information
+                about cyber risk assessment and insurance concepts.
+                `;
+                
+                try {
+                    const response = await fetch(API_URL, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            contents: [
+                                {
+                                    role: "user",
+                                    parts: [
+                                        { text: systemContext },
+                                        { text: message }
+                                    ]
+                                }
+                            ],
+                            generationConfig: {
+                                temperature: 0.7,
+                                maxOutputTokens: 500
+                            }
+                        })
+                    });
+                    
+                    const data = await response.json();
+                    removeTypingIndicator();
+                    
+                    if (data.candidates && data.candidates[0].content.parts && data.candidates[0].content.parts[0].text) {
+                        const botResponse = data.candidates[0].content.parts[0].text;
+                        addMessage(botResponse, 'bot');
+                    } else {
+                        addMessage("I'm sorry, I couldn't process your request at the moment. Please try again later.", 'bot');
+                    }
+                } catch (error) {
+                    console.error('Error calling Gemini API:', error);
+                    removeTypingIndicator();
+                    addMessage("I'm having trouble connecting to my knowledge base. Please try again later.", 'bot');
+                }
+            }
+        });
+    </script>
+</body>
+</html> 

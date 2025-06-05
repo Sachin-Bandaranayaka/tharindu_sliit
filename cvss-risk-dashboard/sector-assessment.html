@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sector-Based Risk Assessment</title>
+    <link rel="stylesheet" href="static/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>CyberGuard</span>
+                </div>
+                <nav id="main-nav">
+                    <ul>
+                        <li><a href="index.html"><i class="fas fa-home"></i> Home (CVSS)</a></li>
+                        <li><a href="expert-assessment.html"><i class="fas fa-user-tie"></i> Expert Assessment</a></li>
+                        <li class="active"><a href="sector-assessment.html"><i class="fas fa-industry"></i> Sector Assessment</a></li>
+                        <li><a href="insurance.html"><i class="fas fa-shield-alt"></i> Insurance</a></li>
+                        <li><a href="dashboard.html"><i class="fas fa-chart-dashboard"></i> Dashboard</a></li>
+                        <li id="logoutLi" style="display: none;">
+                            <a href="#" id="logoutButton">
+                                <i class="fas fa-sign-out-alt"></i>
+                                <span>Logout</span>
+                            </a>
+                        </li>
+                        <li id="loginLi" style="display: none;">
+                            <a href="login.html">
+                                <i class="fas fa-sign-in-alt"></i>
+                                <span>Login</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <button class="mobile-menu-toggle" id="mobile-menu-toggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="intro-section">
+            <div class="container">
+                <div class="intro-content">
+                    <h1 class="text-gradient">Sector-Based Risk Assessment</h1>
+                    <p class="text-muted">Comprehensive cybersecurity risk evaluation tailored to your industry sector</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="container">
+            <div id="errorMessageGlobal" class="alert alert-danger" style="display: none;"></div>
+            <div id="successMessageGlobal" class="alert alert-success" style="display: none;"></div>
+
+            <section id="assessmentFormContainer" class="card" style="display: none;">
+                <div class="card-header">
+                    <h2>Sector-Based Risk Assessment Form</h2>
+                    <div id="userInfo" class="user-info alert alert-success" style="display: none;"></div>
+                </div>
+                <div class="card-body">
+                    <form id="sectorRiskForm">
+                        <div class="tabs">
+                            <button type="button" class="tab active" onclick="showTab('attack-scenario')">Attack Scenario</button>
+                            <button type="button" class="tab" onclick="showTab('company-profile')">Company Profile</button>
+                        </div>
+
+                        <div id="attack-scenario" class="tab-content active">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3>Attack Scenario Information</h3>
+                                </div>
+                                <div class="card-body">
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="attackType">Attack Type:</label>
+                                            <select id="attackType" name="attack_type" class="form-control" required>
+                                                <option value="">Select Attack Type</option>
+                                                <option value="Malware">Malware</option>
+                                                <option value="Phishing">Phishing</option>
+                                                <option value="Ransomware">Ransomware</option>
+                                                <option value="DDoS">DDoS</option>
+                                                <option value="Data Breach">Data Breach</option>
+                                                <option value="Insider Threat">Insider Threat</option>
+                                                <option value="Social Engineering">Social Engineering</option>
+                                                <option value="Supply Chain Attack">Supply Chain Attack</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="targetedSector">Targeted Sector:</label>
+                                            <select id="targetedSector" name="targeted_sector" class="form-control" required>
+                                                <option value="">Select Sector</option>
+                                                <option value="Financial Services">Financial Services</option>
+                                                <option value="Healthcare">Healthcare</option>
+                                                <option value="Government">Government</option>
+                                                <option value="Technology">Technology</option>
+                                                <option value="Manufacturing">Manufacturing</option>
+                                                <option value="Retail">Retail</option>
+                                                <option value="Education">Education</option>
+                                                <option value="Energy">Energy</option>
+                                                <option value="Transportation">Transportation</option>
+                                                <option value="Telecommunications">Telecommunications</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="attackVector">Attack Vector:</label>
+                                            <select id="attackVector" name="attack_vector" class="form-control" required>
+                                                <option value="">Select Vector</option>
+                                                <option value="Email">Email</option>
+                                                <option value="Web Application">Web Application</option>
+                                                <option value="Network">Network</option>
+                                                <option value="Physical">Physical</option>
+                                                <option value="USB/Removable Media">USB/Removable Media</option>
+                                                <option value="Cloud Services">Cloud Services</option>
+                                                <option value="Mobile Device">Mobile Device</option>
+                                                <option value="Third-party">Third-party</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="attackSophistication">Attack Sophistication:</label>
+                                            <select id="attackSophistication" name="attack_sophistication" class="form-control" required>
+                                                <option value="">Select Sophistication</option>
+                                                <option value="Low">Low</option>
+                                                <option value="Medium">Medium</option>
+                                                <option value="High">High</option>
+                                                <option value="Advanced">Advanced</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="estimatedRevenueLoss">Estimated Revenue Loss (USD):</label>
+                                            <input type="number" id="estimatedRevenueLoss" name="estimated_revenue_loss" class="form-control" min="0" step="1000" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="estimatedDowntime">Estimated Downtime (hours):</label>
+                                            <input type="number" id="estimatedDowntime" name="estimated_downtime" class="form-control" min="0" step="1" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="dataSensitivity">Data Sensitivity:</label>
+                                            <select id="dataSensitivity" name="data_sensitivity" class="form-control" required>
+                                                <option value="">Select Sensitivity</option>
+                                                <option value="Low">Low</option>
+                                                <option value="Medium">Medium</option>
+                                                <option value="High">High</option>
+                                                <option value="Critical">Critical</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="threatActorType">Threat Actor Type:</label>
+                                            <select id="threatActorType" name="threat_actor_type" class="form-control" required>
+                                                <option value="">Select Actor Type</option>
+                                                <option value="Script Kiddie">Script Kiddie</option>
+                                                <option value="Cybercriminal">Cybercriminal</option>
+                                                <option value="Nation State">Nation State</option>
+                                                <option value="Insider">Insider</option>
+                                                <option value="Hacktivist">Hacktivist</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="geographicScope">Geographic Scope of Attack:</label>
+                                            <select id="geographicScope" name="geographic_scope" class="form-control" required>
+                                                <option value="">Select Scope</option>
+                                                <option value="Local">Local</option>
+                                                <option value="Regional">Regional</option>
+                                                <option value="National">National</option>
+                                                <option value="International">International</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="regulatoryImpact">Regulatory Impact:</label>
+                                            <select id="regulatoryImpact" name="regulatory_impact" class="form-control" required>
+                                                <option value="">Select Impact</option>
+                                                <option value="None">None</option>
+                                                <option value="Low">Low</option>
+                                                <option value="Medium">Medium</option>
+                                                <option value="High">High</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="attackDescription">Attack Description:</label>
+                                        <textarea id="attackDescription" name="attack_description" class="form-control" placeholder="Describe the potential attack scenario..." rows="3" required></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="company-profile" class="tab-content">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3>Company Profile Information</h3>
+                                </div>
+                                <div class="card-body">
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="industryTypeCompany">Industry Type:</label>
+                                            <select id="industryTypeCompany" name="industry_type" class="form-control" required>
+                                                <option value="">Select Industry</option>
+                                                <option value="Financial Services">Financial Services</option>
+                                                <option value="Healthcare">Healthcare</option>
+                                                <option value="Government">Government</option>
+                                                <option value="Technology">Technology</option>
+                                                <option value="Manufacturing">Manufacturing</option>
+                                                <option value="Retail">Retail</option>
+                                                <option value="Education">Education</option>
+                                                <option value="Energy">Energy</option>
+                                                <option value="Transportation">Transportation</option>
+                                                <option value="Telecommunications">Telecommunications</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="companyCategory">Company Category:</label>
+                                            <select id="companyCategory" name="company_category" class="form-control" required>
+                                                <option value="">Select Category</option>
+                                                <option value="Startup">Startup</option>
+                                                <option value="SME">SME</option>
+                                                <option value="Enterprise">Enterprise</option>
+                                                <option value="Government">Government</option>
+                                                <option value="Multinational">Multinational</option>
+                                                <option value="Non-profit">Non-profit</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="employeeCount">Employee Count:</label>
+                                            <input type="number" id="employeeCount" name="employee_count" class="form-control" min="1" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="annualRevenue">Annual Revenue (USD):</label>
+                                            <input type="number" id="annualRevenue" name="annual_revenue" class="form-control" min="0" step="10000" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="geographicPresence">Geographic Presence:</label>
+                                            <select id="geographicPresence" name="geographic_presence" class="form-control" required>
+                                                <option value="">Select Presence</option>
+                                                <option value="Local">Local</option>
+                                                <option value="Regional">Regional</option>
+                                                <option value="National">National</option>
+                                                <option value="International">International</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="dataHandlingVolume">Data Handling Volume:</label>
+                                            <select id="dataHandlingVolume" name="data_handling_volume" class="form-control" required>
+                                                <option value="">Select Volume</option>
+                                                <option value="Low">Low</option>
+                                                <option value="Medium">Medium</option>
+                                                <option value="High">High</option>
+                                                <option value="Very High">Very High</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="securityPosture">Security Posture:</label>
+                                            <select id="securityPosture" name="security_posture" class="form-control" required>
+                                                <option value="">Select Posture</option>
+                                                <option value="Poor">Poor</option>
+                                                <option value="Basic">Basic</option>
+                                                <option value="Good">Good</option>
+                                                <option value="Excellent">Excellent</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="complianceRequirements">Compliance Requirements:</label>
+                                            <select id="complianceRequirements" name="compliance_requirements" class="form-control" required>
+                                                <option value="">Select Compliance</option>
+                                                <option value="None">None</option>
+                                                <option value="Basic">Basic</option>
+                                                <option value="Moderate">Moderate</option>
+                                                <option value="Strict">Strict</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="technologyAdoption">Technology Adoption Level:</label>
+                                            <select id="technologyAdoption" name="technology_adoption" class="form-control" required>
+                                                <option value="">Select Level</option>
+                                                <option value="Low">Low (Legacy Systems)</option>
+                                                <option value="Medium">Medium (Some Modern Tech)</option>
+                                                <option value="High">High (Cutting-Edge Tech)</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="businessModel">Business Model:</label>
+                                            <select id="businessModel" name="business_model" class="form-control" required>
+                                                <option value="">Select Model</option>
+                                                <option value="B2C">B2C</option>
+                                                <option value="B2B">B2B</option>
+                                                <option value="Hybrid">Hybrid</option>
+                                                <option value="Government">Government</option>
+                                                <option value="Non-profit">Non-profit</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="businessDescription">Business Description:</label>
+                                        <textarea id="businessDescription" name="business_description" class="form-control" placeholder="Describe your business operations and key activities..." rows="3" required></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="text-align: center; margin-top: 30px;">
+                            <button type="submit" class="btn btn-primary">Assess Sector Risk</button>
+                            <button type="button" class="btn btn-secondary" id="resetFormBtn">Reset Form</button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+
+            <div id="results" class="results" style="display:none;"></div>
+        </div>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Unified Risk Assessment Platform. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="static/script.js" defer></script>
+    <script>
+        let currentUser = null;
+
+        document.addEventListener('DOMContentLoaded', function() {
+            currentUser = checkLoginStatus();
+
+            const assessmentFormContainer = document.getElementById('assessmentFormContainer');
+            const userInfoDisp = document.getElementById('userInfo');
+            const logoutLi = document.getElementById('logoutLi');
+            const loginLi = document.getElementById('loginLi');
+            const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+            const mainNav = document.getElementById('main-nav');
+
+            if (currentUser) {
+                if(assessmentFormContainer) assessmentFormContainer.style.display = 'block';
+                if(userInfoDisp) {
+                    userInfoDisp.textContent = `Welcome, ${currentUser.username}!`;
+                    userInfoDisp.style.display = 'block';
+                }
+                if(logoutLi) logoutLi.style.display = 'block';
+                if(loginLi) loginLi.style.display = 'none';
+
+                const logoutButton = document.getElementById('logoutButton');
+                if (logoutButton) {
+                    logoutButton.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        logout();
+                    });
+                }
+            } else {
+                if(assessmentFormContainer) assessmentFormContainer.style.display = 'none';
+                if(logoutLi) logoutLi.style.display = 'none';
+                if(loginLi) loginLi.style.display = 'block';
+            }
+
+            if (mobileMenuToggle && mainNav) {
+                mobileMenuToggle.addEventListener('click', () => {
+                    mainNav.classList.toggle('active');
+                });
+            }
+            
+            const sectorRiskForm = document.getElementById('sectorRiskForm');
+            if (sectorRiskForm) {
+                sectorRiskForm.addEventListener('submit', handleSubmitSectorRiskForm);
+            }
+
+            const resetFormBtn = document.getElementById('resetFormBtn');
+            if(resetFormBtn) {
+                resetFormBtn.addEventListener('click', resetSectorForm);
+            }
+            
+            const industryTypeCompanyEl = document.getElementById('industryTypeCompany');
+            const targetedSectorEl = document.getElementById('targetedSector');
+            if(industryTypeCompanyEl && targetedSectorEl){
+                industryTypeCompanyEl.addEventListener('change', function() {
+                    if (this.value && !targetedSectorEl.value) {
+                        targetedSectorEl.value = this.value;
+                    }
+                });
+            }
+        });
+
+        function showTab(tabName) {
+            const tabContents = document.querySelectorAll('.tab-content');
+            tabContents.forEach(content => content.classList.remove('active'));
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            document.getElementById(tabName).classList.add('active');
+            document.querySelector(`.tabs button[onclick*="${tabName}"]`).classList.add('active');
+        }
+
+        function showGlobalMessage(message, type) {
+            const errorDiv = document.getElementById('errorMessageGlobal');
+            const successDiv = document.getElementById('successMessageGlobal');
+            if (!errorDiv || !successDiv) {
+                alert(message);
+                return;
+            }
+            errorDiv.style.display = 'none';
+            successDiv.style.display = 'none';
+            const divToShow = type === 'error' ? errorDiv : successDiv;
+            divToShow.textContent = message;
+            divToShow.style.display = 'block';
+            setTimeout(() => { divToShow.style.display = 'none'; }, 5000);
+        }
+
+        function resetSectorForm() {
+            const form = document.getElementById('sectorRiskForm');
+            if(form) form.reset();
+            const resultsDiv = document.getElementById('results');
+            if(resultsDiv) resultsDiv.style.display = 'none';
+            showGlobalMessage('Form reset successfully!', 'success');
+        }
+
+        async function handleSubmitSectorRiskForm(e) {
+            e.preventDefault();
+            if (!currentUser) {
+                showGlobalMessage('Please login to submit an assessment.', 'error');
+                return;
+            }
+
+            const formData = new FormData(e.target);
+            const attackScenario = {};
+            const companyProfile = {};
+
+            const backendAttackFields = ['attack_type', 'targeted_sector', 'attack_vector', 'estimated_revenue_loss', 'estimated_downtime', 'data_sensitivity', 'attack_sophistication', 'threat_actor_type', 'geographic_scope', 'regulatory_impact', 'attack_description'];
+            const backendCompanyFields = ['industry_type', 'company_category', 'annual_revenue', 'employee_count', 'geographic_presence', 'data_handling_volume', 'security_posture', 'compliance_requirements', 'technology_adoption', 'business_model', 'business_description'];
+
+            document.querySelectorAll('#attack-scenario [name]').forEach(input => {
+                if(backendAttackFields.includes(input.name)) attackScenario[input.name] = input.value;
+            });
+
+            document.querySelectorAll('#company-profile [name]').forEach(input => {
+                if(backendCompanyFields.includes(input.name)) companyProfile[input.name] = input.value;
+            });
+            
+            const payload = {
+                attack_scenario: attackScenario,
+                company_profile: companyProfile
+            };
+
+            let missingFields = [];
+            backendAttackFields.forEach(field => {
+                 if (!attackScenario[field] && field !== 'attack_description') {
+                    missingFields.push(field.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase()));
+                 }
+            });
+             backendCompanyFields.forEach(field => {
+                 if (!companyProfile[field] && field !== 'business_description') {
+                    missingFields.push(field.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase()));
+                 }
+            });
+
+            if (missingFields.length > 0) {
+                showGlobalMessage(`Please fill in all required fields: ${missingFields.join(', ')}`, 'error');
+                return;
+            }
+            
+            try {
+                const response = await fetch('/api/sector-risk-predict', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                const result = await response.json();
+                if (response.ok) {
+                    displaySectorResults(result);
+                } else {
+                    showGlobalMessage(result.error || 'Assessment failed. ' + (result.missing_attack_fields || result.missing_company_fields ? `Missing: ${[...(result.missing_attack_fields || []), ...(result.missing_company_fields || [])].join(', ')}` : ''), 'error');
+                }
+            } catch (error) {
+                console.error("Sector assessment error:", error);
+                showGlobalMessage('Network error. Please try again.', 'error');
+            }
+        }
+
+        function displaySectorResults(result) {
+            const resultsDiv = document.getElementById('results');
+            if(!resultsDiv) return;
+
+            let riskClass = 'risk-low';
+            let riskColorVar = 'var(--risk-low)';
+            if (result.risk_level === 'Medium') {
+                riskClass = 'risk-medium';
+                riskColorVar = 'var(--risk-medium)';
+            } else if (result.risk_level === 'High') {
+                riskClass = 'risk-high';
+                riskColorVar = 'var(--risk-high)';
+            } else if (result.risk_level === 'Critical') {
+                riskClass = 'risk-critical';
+                riskColorVar = 'var(--risk-critical)';
+            }
+
+            const riskScore = result.risk_score ? result.risk_score.toFixed(1) : 0;
+            const progressValue = (riskScore / 100) * 360; // For conic-gradient
+
+            let riskFactorsHtml = '';
+            if (result.key_risk_factors && result.key_risk_factors.length > 0) {
+                riskFactorsHtml = `
+                    <div class="accordion card">
+                        <button class="accordion-header">
+                            <h3><i class="fas fa-exclamation-triangle icon-left"></i>Key Risk Factors</h3>
+                            <i class="fas fa-chevron-down accordion-icon"></i>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="card-body"><ul>
+                            ${result.key_risk_factors.map(factor => `<li><i class="fas fa-caret-right"></i> ${factor}</li>`).join('')}
+                            </ul></div>
+                        </div>
+                    </div>
+                `;
+            }
+            
+            let recommendationsHtml = '';
+            if (result.recommendations && result.recommendations.length > 0) {
+                recommendationsHtml = `
+                    <div class="accordion card">
+                        <button class="accordion-header">
+                            <h3><i class="fas fa-lightbulb icon-left"></i>Tailored Security Recommendations</h3>
+                            <i class="fas fa-chevron-down accordion-icon"></i>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="card-body"><ul>
+                            ${result.recommendations.map(rec => `<li><i class="fas fa-check-circle"></i> ${rec}</li>`).join('')}
+                            </ul></div>
+                        </div>
+                    </div>
+                `;
+            }
+            
+            const premiumCalculatorHtml = `
+                <div class="premium-calculator-container card mt-4">
+                    <div class="card-header">
+                        <h3><i class="fas fa-calculator icon-left"></i>Cyber Insurance Premium Calculator</h3>
+                    </div>
+                    <div class="card-body">
+                        <form id="premium-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="assetValue">Value Of The Company Assets (USD)</label>
+                                    <input type="number" id="assetValue" class="form-control" required />
+                                </div>
+                                <div class="form-group">
+                                    <label for="insuranceType">Choose Insurance Type</label>
+                                    <select id="insuranceType" class="form-control">
+                                        <option value="first">First Party</option>
+                                        <option value="both">First Party + Third Party Insurance</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="calculatedRiskLevel">Select Final Risk Level</label>
+                                    <select id="calculatedRiskLevel" class="form-control">
+                                        <option value="low">Low Risk</option>
+                                        <option value="medium">Medium Risk</option>
+                                        <option value="high">High Risk</option>
+                                        <option value="critical">Critical Risk</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-actions" style="justify-content: center;">
+                                <button type="button" class="btn btn-success" onclick="calculatePremium()"><i class="fas fa-play-circle"></i> Calculate Premium</button>
+                            </div>
+                        </form>
+                        <div id="premium-result-display" class="mt-3 text-center">
+                            <h4>Estimated Yearly Premium: <span id="premium-output" class="font-bold text-primary">--</span></h4>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            resultsDiv.innerHTML = `
+                <h2 class="text-gradient">Sector-Based Risk Assessment Results</h2>
+                <div class="results-grid">
+                    <div class="risk-score-visual card ${riskClass}-bg">
+                        <div class="card-header" style="border-bottom: none; margin-bottom: 0;">
+                             <h3 class="text-primary">Overall Risk Level</h3>
+                        </div>
+                        <div class="card-body text-center">
+                            <div class="circular-progress ${riskClass}" style="--progress-value:${riskScore}; --risk-color:${riskColorVar};">
+                                <span class="progress-value-text">${riskScore}/100</span>
+                            </div>
+                            <p class="risk-level-text ${riskClass}">${result.risk_level} Risk</p>
+                        </div>
+                    </div>
+
+                    <div class="assessment-summary card">
+                        <div class="card-header"><h3><i class="fas fa-file-alt icon-left"></i>Assessment Summary</h3></div>
+                        <div class="card-body">
+                            <p><strong><i class="fas fa-industry icon-left-small"></i>Industry:</strong> ${result.company_profile.industry_type || 'N/A'}</p>
+                            <p><strong><i class="fas fa-bolt icon-left-small"></i>Attack Type Considered:</strong> ${result.attack_scenario.attack_type || 'N/A'}</p>
+                            <p><strong><i class="fas fa-building icon-left-small"></i>Company Category:</strong> ${result.company_profile.company_category || 'N/A'}</p>
+                            <p><strong><i class="fas fa-shield-alt icon-left-small"></i>Assessed Security Posture:</strong> ${result.company_profile.security_posture || 'N/A'}</p>
+                        </div>
+                    </div>
+                </div>
+                
+                ${riskFactorsHtml}
+                ${recommendationsHtml}
+                
+                ${premiumCalculatorHtml}
+                
+                <div style="text-align: center; margin-top: 30px;">
+                    <button class="btn btn-primary btn-lg" onclick="window.location.href='insurance.html'"><i class="fas fa-shield-alt"></i> Get Insurance Quote</button>
+                </div>
+            `;
+            
+            resultsDiv.style.display = 'block';
+            resultsDiv.scrollIntoView({ behavior: 'smooth' });
+
+            // Initialize accordions
+            const accordions = resultsDiv.querySelectorAll('.accordion-header');
+            accordions.forEach(accordion => {
+                accordion.addEventListener('click', () => {
+                    const content = accordion.nextElementSibling;
+                    const icon = accordion.querySelector('.accordion-icon');
+                    
+                    accordion.classList.toggle('active');
+                    if (content.style.maxHeight) {
+                        content.style.maxHeight = null;
+                        icon.classList.remove('fa-chevron-up');
+                        icon.classList.add('fa-chevron-down');
+                    } else {
+                        content.style.maxHeight = content.scrollHeight + "px";
+                        icon.classList.remove('fa-chevron-down');
+                        icon.classList.add('fa-chevron-up');
+                    }
+                });
+            });
+
+            // Pre-select risk level in calculator
+            const calculatedRiskLevelSelect = document.getElementById('calculatedRiskLevel');
+            if (calculatedRiskLevelSelect && result.risk_level) {
+                calculatedRiskLevelSelect.value = result.risk_level.toLowerCase();
+            }
+        }
+
+        function calculatePremium() {
+            const assetValue = parseFloat(document.getElementById("assetValue").value);
+            const insuranceType = document.getElementById("insuranceType").value;
+            const riskLevel = document.getElementById("calculatedRiskLevel").value; // Changed ID here
+
+            if (isNaN(assetValue) || assetValue <= 0) { // Added check for positive value
+                showGlobalMessage("Please enter a valid positive asset value.", "error");
+                return;
+            }
+
+            const premiumTable = {
+                first: {
+                low: 0.003,
+                medium: 0.015,
+                high: 0.027,
+                critical: 0.035
+                },
+                both: {
+                low: 0.005,
+                medium: 0.025,
+                high: 0.03,
+                critical: 0.04
+                }
+            };
+
+            // Ensure insuranceType and riskLevel are valid keys
+            if (!premiumTable[insuranceType] || !premiumTable[insuranceType][riskLevel]) {
+                showGlobalMessage("Invalid insurance type or risk level selected for premium calculation.", "error");
+                console.error("Invalid keys for premiumTable:", insuranceType, riskLevel);
+                return;
+            }
+
+            const multiplier = premiumTable[insuranceType][riskLevel];
+            const yearlyPremium = (assetValue * multiplier).toFixed(2);
+
+            document.getElementById("premium-output").innerText = "$" + yearlyPremium;
+            document.getElementById("premium-result-display").style.display = 'block'; // Ensure it's visible
+        }
+    </script>
+</body>
+</html>
